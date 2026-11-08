@@ -1,0 +1,22 @@
+services:
+  api:
+    build: .
+    env_file: .env
+    environment: { APP_ENV: production, LOG_JSON: "true" }
+    ports: ["8000:8000"]
+    volumes: ["./data:/app/data", "rag_state:/app/.state"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request;urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 15s
+      retries: 5
+    restart: unless-stopped
+  ui:
+    build: .
+    command: ["streamlit", "run", "ui/streamlit_app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+    env_file: .env
+    environment: { API_BASE_URL: "http://api:8000" }
+    ports: ["8501:8501"]
+    depends_on: { api: { condition: service_healthy } }
+    restart: unless-stopped
+volumes:
+  rag_state:
