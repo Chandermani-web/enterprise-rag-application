@@ -1,0 +1,5 @@
+{"question": "Why is the Document AI location set to 'us' instead of us-central1?", "expected_source": "12_KNOWN_GOTCHAS.md", "keywords": ["multi-region"]}
+{"question": "What cosine distance threshold does the semantic cache use?", "expected_source": "10_REDIS_CACHING.md", "keywords": ["0.15"]}
+{"question": "Which cross-encoder model does FlashRank use for reranking?", "expected_source": "13_FLASHRANK_RERANKING.md", "keywords": ["ms-marco"]}
+{"question": "What are the two intents the Planner node chooses between?", "expected_source": "03_NODE_INTELLIGENCE.md", "keywords": ["conversational", "technical"]}
+{"question": "Why does the project use lazy loading for models?", "expected_source": "12_KNOWN_GOTCHAS.md", "keywords": ["Logfire"]}
